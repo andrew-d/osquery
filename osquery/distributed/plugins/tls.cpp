@@ -10,7 +10,7 @@
 
 // clang-format off
 // This must be here to prevent a WinSock.h exists error
-#include "osquery/remote/transports/tls.h"
+#include "osquery/remote/transports/transport.h"
 // clang-format on
 
 #include <vector>

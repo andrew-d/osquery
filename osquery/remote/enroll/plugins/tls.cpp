@@ -14,7 +14,7 @@
 
 #include "osquery/remote/requests.h"
 #include "osquery/remote/serializers/json.h"
-#include "osquery/remote/transports/tls.h"
+#include "osquery/remote/transports/transport.h"
 
 // Ordering is messed up because of tls.h
 #include "osquery/core/process.h"
@@ -87,7 +87,7 @@ Status TLSEnrollPlugin::requestKey(const std::string& uri,
   params.put<std::string>(FLAGS_tls_enroll_override, getEnrollSecret());
   params.put<std::string>("host_identifier", getHostIdentifier());
 
-  auto request = Request<TLSTransport, JSONSerializer>(uri);
+  auto request = Request<DefaultTransport, JSONSerializer>(uri);
   request.setOption("hostname", FLAGS_tls_hostname);
   auto status = request.call(params);
   if (!status.ok()) {

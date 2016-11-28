@@ -12,7 +12,7 @@
 
 #include "osquery/remote/requests.h"
 #include "osquery/remote/serializers/json.h"
-#include "osquery/remote/transports/tls.h"
+#include "osquery/remote/transports/transport.h"
 
 namespace osquery {
 

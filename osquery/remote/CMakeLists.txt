@@ -1,10 +1,15 @@
-ADD_OSQUERY_LIBRARY(FALSE osquery_remote
+set(OSQUERY_REMOTE_FILES
   enroll/enroll.cpp
   serializers/json.cpp
   transports/tls.cpp
-  transports/curl.cpp
   remote.cpp
 )
+
+if(OSQUERY_WITH_CURL_TRANSPORT)
+  set(OSQUERY_REMOTE_FILES ${OSQUERY_REMOTE_FILES} transports/curl.cpp)
+endif()
+
+ADD_OSQUERY_LIBRARY(FALSE osquery_remote ${OSQUERY_REMOTE_FILES})
 
 ADD_OSQUERY_LIBRARY(FALSE osquery_enrollment_plugins
   enroll/plugins/tls.cpp

@@ -437,6 +437,9 @@ else()
     )
 endif()
 
+# Transport options
+include(Transports)
+
 # Make sure the generated paths exist
 execute_process(COMMAND mkdir ${MKDIR_OPTS} "${CMAKE_BINARY_DIR}/generated")
 

@@ -14,7 +14,7 @@
 #include <osquery/flags.h>
 
 #include "osquery/remote/requests.h"
-#include "osquery/remote/transports/tls.h"
+#include "osquery/remote/transports/transport.h"
 
 #include "osquery/core/process.h"
 
@@ -88,7 +88,7 @@ class TLSRequestHelper : private boost::noncopyable {
     }
 
     // Again check for GET to call with/without parameters.
-    auto request = Request<TLSTransport, TSerializer>(uri + uri_suffix);
+    auto request = Request<DefaultTransport, TSerializer>(uri + uri_suffix);
     request.setOption("hostname", FLAGS_tls_hostname);
 
     bool compress = false;
