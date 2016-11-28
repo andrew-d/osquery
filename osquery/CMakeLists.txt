@@ -35,6 +35,8 @@ else()
   )
 endif()
 
+ADD_OSQUERY_LINK_CORE("curl")
+
 if(WINDOWS)
   ADD_OSQUERY_LINK_CORE("netapi32.lib")
   ADD_OSQUERY_LINK_CORE("rpcrt4.lib")
